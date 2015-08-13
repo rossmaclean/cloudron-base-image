@@ -43,7 +43,7 @@ RUN apt-get -y install \
     zlib1g-dev
 
 # Databases
-RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client
+RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4
 
 # node
 RUN apt-get -y install nodejs npm
