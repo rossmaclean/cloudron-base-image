@@ -43,7 +43,7 @@ RUN apt-get -y install \
     zlib1g-dev
 
 # Databases
-RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4
+RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils
 
 # node
 RUN curl -sL https://deb.nodesource.com/setup_0.10 | bash -
@@ -73,15 +73,14 @@ RUN apt-get -y install \
     php5-sqlite \
     phpmyadmin
 
-#perl
+# perl
 RUN apt-get -y install perl
 
 # ruby
 RUN apt-get -y install ruby-dev
 RUN gem install bundler --no-ri --no-rdoc
 
-#
-#### Python
+# Python
 RUN apt-get install -y gunicorn uwsgi-plugin-python
 
 # java (maybe only runtime should be installed and not the JDK)
