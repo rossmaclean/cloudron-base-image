@@ -42,8 +42,8 @@ RUN apt-get -y install \
     libyaml-dev \
     zlib1g-dev
 
-# Databases
-RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils
+# Databases (clients)
+RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils mongodb-clients
 
 # node
 RUN curl -sL https://deb.nodesource.com/setup_0.10 | bash -
