@@ -46,7 +46,7 @@ RUN apt-get -y install \
 RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils mongodb-clients
 
 # node
-RUN curl -sL https://deb.nodesource.com/setup_0.10 | bash -
+RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash -
 RUN apt-get install -y nodejs
 RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 
