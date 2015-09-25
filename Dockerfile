@@ -73,6 +73,9 @@ RUN apt-get -y install \
     php5-sqlite \
     phpmyadmin
 
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
 # perl
 RUN apt-get -y install perl
 
