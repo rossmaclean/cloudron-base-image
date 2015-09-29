@@ -45,10 +45,15 @@ RUN apt-get -y install \
 # Databases (clients)
 RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils mongodb-clients
 
-# node
-RUN curl -sL https://deb.nodesource.com/setup_0.12 | bash -
-RUN apt-get install -y nodejs
-RUN update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+# node (0.12.7) is the default
+RUN mkdir -p /usr/local/node-0.12.7
+RUN ln -s /usr/local/node-0.12.7 /usr/local/node
+RUN curl -L https://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.12.7
+ENV PATH /usr/local/node/bin:$PATH
+
+# node (4.1.1)
+RUN mkdir -p /usr/local/node-4.1.1
+RUN curl -L https://nodejs.org/dist/v4.1.1/node-v4.1.1-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-4.1.1
 
 # apache
 RUN apt-get -y install apache2 libapache2-mod-php5 libapache2-mod-perl2
