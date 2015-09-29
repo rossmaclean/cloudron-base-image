@@ -47,9 +47,8 @@ RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.
 
 # node (0.12.7) is the default
 RUN mkdir -p /usr/local/node-0.12.7
-RUN ln -s /usr/local/node-0.12.7 /usr/local/node
 RUN curl -L https://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.12.7
-ENV PATH /usr/local/node/bin:$PATH
+ENV PATH /usr/local/node-0.12.7/bin:$PATH
 
 # node (4.1.1)
 RUN mkdir -p /usr/local/node-4.1.1
@@ -96,9 +95,8 @@ RUN apt-get install -y openjdk-8-jdk maven
 
 # go
 RUN mkdir -p /usr/local/go-1.5.1
-RUN ln -s /usr/local/go-1.5.1 /usr/local/go
 RUN curl -L https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.1 --strip-components 1
-ENV PATH /usr/local/go/bin:$PATH
+ENV PATH /usr/local/go-1.5.1/bin:$PATH
 
 # add a non-previleged user that apps can use
 RUN adduser --disabled-login --gecos 'Cloudron' cloudron
