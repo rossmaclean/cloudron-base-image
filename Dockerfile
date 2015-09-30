@@ -1,5 +1,5 @@
 FROM ubuntu:14.10
-MAINTAINER Girish Ramakrishnan <girish@forwardbias.in>
+MAINTAINER Girish Ramakrishnan <girish@cloudron.io>
 
 ENV DEBIAN_FRONTEND noninteractive
 # Do not cache apt packages
