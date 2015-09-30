@@ -45,10 +45,13 @@ RUN apt-get -y install \
 # Databases (clients)
 RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils mongodb-clients
 
-# node (0.12.7) is the default
+# node (0.10.40)
+RUN mkdir -p /usr/local/node-0.10.40
+RUN curl -L  https://nodejs.org/dist/v0.10.40/node-v0.10.40-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.12.7
+
+# node (0.12.7)
 RUN mkdir -p /usr/local/node-0.12.7
 RUN curl -L https://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.12.7
-ENV PATH /usr/local/node-0.12.7/bin:$PATH
 
 # node (4.1.1)
 RUN mkdir -p /usr/local/node-4.1.1
