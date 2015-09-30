@@ -80,7 +80,7 @@ RUN apt-get -y install \
     php5-sqlite \
     phpmyadmin
 
-RUN curl -sS https://getcomposer.org/installer | php
+RUN curl -sS https://getcomposer.org/installer | php -- --version=1.0.0-alpha10
 RUN mv composer.phar /usr/local/bin/composer
 
 # perl
