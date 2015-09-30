@@ -87,11 +87,11 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN apt-get -y install perl
 
 # ruby
-RUN apt-get -y install ruby-dev
+RUN apt-get -y install ruby2.1-dev
 RUN gem install bundler --no-ri --no-rdoc
 
 # Python
-RUN apt-get install -y gunicorn uwsgi-plugin-python
+RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python
 
 # java (maybe only runtime should be installed and not the JDK)
 RUN apt-get install -y openjdk-8-jdk maven
