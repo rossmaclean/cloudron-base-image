@@ -101,6 +101,9 @@ RUN mkdir -p /usr/local/go-1.5.1
 RUN curl -L https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.1 --strip-components 1
 ENV PATH /usr/local/go-1.5.1/bin:$PATH
 
+# install sendmail
+RUN apt-get install -y postfix
+
 # add a non-previleged user that apps can use
 RUN adduser --disabled-login --gecos 'Cloudron' cloudron
 # by default, account is created as inactive which prevents login via openssh
