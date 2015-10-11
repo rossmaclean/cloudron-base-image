@@ -1,4 +1,4 @@
-FROM ubuntu:14.10
+FROM ubuntu:wily-20151006
 MAINTAINER Girish Ramakrishnan <girish@cloudron.io>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -86,15 +86,14 @@ RUN mv composer.phar /usr/local/bin/composer
 # perl
 RUN apt-get -y install perl
 
-# ruby
-RUN apt-get -y install ruby2.1-dev
-RUN gem install bundler --no-ri --no-rdoc
+# ruby (note that gem is now called gem2.1 and gem2.2)
+RUN apt-get -y install ruby2.1-dev ruby2.2-dev
 
 # Python
 RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python
 
 # java (maybe only runtime should be installed and not the JDK)
-RUN apt-get install -y openjdk-8-jdk maven
+RUN apt-get install -y openjdk-7-jdk openjdk-8-jdk maven
 
 # go
 RUN mkdir -p /usr/local/go-1.5.1
