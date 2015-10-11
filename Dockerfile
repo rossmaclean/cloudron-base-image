@@ -22,7 +22,7 @@ RUN apt-get -y install ca-certificates curl git wget unzip
 RUN apt-get -y install supervisor
 
 # General purpose
-RUN apt-get -y install build-essential pwgen swaks vim cmake pkg-config openssh-client uuid sudo
+RUN apt-get -y install build-essential pwgen swaks vim cmake pkg-config openssh-client uuid sudo less
 
 # Dev packages (useful for native modules in ruby, node)
 RUN apt-get -y install \
@@ -99,6 +99,10 @@ RUN apt-get install -y openjdk-7-jdk openjdk-8-jdk maven
 RUN mkdir -p /usr/local/go-1.5.1
 RUN curl -L https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.1 --strip-components 1
 ENV PATH /usr/local/go-1.5.1/bin:$PATH
+
+# gosu
+RUN curl -L https://github.com/tianon/gosu/releases/download/1.6/gosu-amd64 -o /usr/local/bin/gosu
+RUN chmod +x /usr/local/bin/gosu
 
 # install sendmail
 RUN apt-get install -y postfix
