@@ -113,3 +113,5 @@ RUN passwd -d cloudron
 # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
 RUN rm -r /var/cache/apt /var/lib/apt/lists
 
+ADD entrypoint.sh /bin/entrypoint
+
