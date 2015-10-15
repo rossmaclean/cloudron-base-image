@@ -1,4 +1,4 @@
-FROM ubuntu:wily-20151006
+FROM ubuntu:15.10
 MAINTAINER Girish Ramakrishnan <girish@cloudron.io>
 
 ENV DEBIAN_FRONTEND noninteractive
