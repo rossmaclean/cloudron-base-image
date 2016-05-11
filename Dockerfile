@@ -108,7 +108,7 @@ RUN chmod +x /usr/local/bin/gosu
 RUN apt-get install -y postfix
 
 # install net packages useful for debugging
-RUN apt-get install -y iputils-ping telnet netcat lsof net-tools openssl
+RUN apt-get install -y iputils-ping telnet netcat lsof net-tools openssl dnsutils
 
 # add a non-previleged user that apps can use
 RUN adduser --disabled-login --gecos 'Cloudron' cloudron
