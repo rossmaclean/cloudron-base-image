@@ -90,7 +90,7 @@ RUN curl -L https://getcomposer.org/download/1.2.0/composer.phar > /usr/local/bi
 RUN apt-get -y install perl
 
 # ruby (note that gem is now called gem2.1 and gem2.2)
-RUN apt-get -y install ruby2.1-dev ruby2.2-dev
+RUN apt-get -y install ruby2.3-dev
 
 # Python
 RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python
