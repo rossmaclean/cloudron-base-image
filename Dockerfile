@@ -100,9 +100,9 @@ RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python
 RUN apt-get install -y openjdk-7-jdk openjdk-8-jdk maven
 
 # go
-RUN mkdir -p /usr/local/go-1.5.1
-RUN curl -L https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.1 --strip-components 1
-ENV PATH /usr/local/go-1.5.1/bin:$PATH
+RUN mkdir -p /usr/local/go-1.5.4
+RUN curl -L https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.4 --strip-components 1
+ENV PATH /usr/local/go-1.5.4/bin:$PATH
 
 # gosu
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.6/gosu-amd64 -o /usr/local/bin/gosu
