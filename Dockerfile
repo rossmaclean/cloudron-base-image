@@ -62,7 +62,7 @@ RUN mkdir -p /usr/local/node-4.4.7
 RUN curl -L https://nodejs.org/download/release/v4.4.7/node-v4.4.7-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.4.7
 
 # apache
-RUN apt-get -y install apache2 libapache2-mod-php5 libapache2-mod-perl2
+RUN apt-get -y install apache2 libapache2-mod-php7.0 libapache2-mod-perl2
 
 # nginx
 RUN apt-get -y install nginx-full
