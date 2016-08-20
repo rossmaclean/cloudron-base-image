@@ -43,7 +43,7 @@ RUN apt-get -y install \
     zlib1g-dev
 
 # Databases (clients)
-RUN apt-get -y install sqlite3 mysql-client-5.6 redis-tools postgresql-client-9.4 ldap-utils mongodb-clients
+RUN apt-get -y install sqlite3 mysql-client-5.7 redis-tools postgresql-client-9.5 ldap-utils mongodb-clients
 
 # node (0.10.40)
 RUN mkdir -p /usr/local/node-0.10.40
