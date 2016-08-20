@@ -96,7 +96,7 @@ RUN apt-get -y install ruby2.3-dev
 RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python
 
 # java (maybe only runtime should be installed and not the JDK)
-RUN apt-get install -y openjdk-7-jdk openjdk-8-jdk maven
+RUN apt-get install -y openjdk-8-jdk maven
 
 # go
 RUN mkdir -p /usr/local/go-1.5.4
