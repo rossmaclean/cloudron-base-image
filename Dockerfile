@@ -69,23 +69,22 @@ RUN apt-get -y install nginx-full
 
 # php
 RUN apt-get -y install \
-    php-apc \
-    php5-cli \
-    php5-curl \
-    php5-fpm \
-    php5-gd \
-    php5-gmp \
-    php5-json \
-    php5-intl \
-    php5-ldap \
-    php5-mcrypt \
-    php5-mysqlnd \
-    php5-pgsql \
-    php5-sqlite \
+    php-apcu \
+    php7.0-cli \
+    php7.0-curl \
+    php7.0-fpm \
+    php7.0-gd \
+    php7.0-gmp \
+    php7.0-json \
+    php7.0-intl \
+    php7.0-ldap \
+    php7.0-mcrypt \
+    php7.0-mysqlnd \
+    php7.0-pgsql \
+    php7.0-sqlite \
     phpmyadmin
 
-RUN curl -sS https://getcomposer.org/installer | php -- --version=1.0.0-alpha10
-RUN mv composer.phar /usr/local/bin/composer
+RUN curl -L https://getcomposer.org/download/1.2.0/composer.phar > /usr/local/bin/composer
 
 # perl
 RUN apt-get -y install perl
