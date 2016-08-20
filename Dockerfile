@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 MAINTAINER Girish Ramakrishnan <girish@cloudron.io>
 
 ENV DEBIAN_FRONTEND noninteractive
