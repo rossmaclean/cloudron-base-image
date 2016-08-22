@@ -100,7 +100,7 @@ RUN apt-get install -y openjdk-8-jdk maven
 
 # go
 RUN mkdir -p /usr/local/go-1.5.4
-RUN curl -L https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.4 --strip-components 1
+RUN curl -L https://storage.googleapis.com/golang/go1.5.4.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.5.4 --strip-components 1
 ENV PATH /usr/local/go-1.5.4/bin:$PATH
 
 RUN mkdir -p /usr/local/go-1.6.3
