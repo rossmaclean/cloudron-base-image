@@ -122,6 +122,9 @@ RUN adduser --disabled-login --gecos 'Cloudron' cloudron
 # https://github.com/gitlabhq/gitlabhq/issues/5304
 RUN passwd -d cloudron
 
+# config file manipulation
+RUN apt-get install -y crudini
+
 # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
 RUN rm -r /var/cache/apt /var/lib/apt/lists
 
