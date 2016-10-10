@@ -10,10 +10,6 @@ RUN echo 'Dir::Cache { srcpkgcache ""; pkgcache ""; }' > /etc/apt/apt.conf.d/02n
 RUN echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/02compress-indexes
 
 RUN apt-get -y update # sync up package information
-#
-## needed for add-apt-repository
-#RUN apt-get install -y software-properties-common
-#
 
 # Software installation
 RUN apt-get -y install ca-certificates curl git wget unzip
@@ -125,6 +121,8 @@ RUN passwd -d cloudron
 
 # config file manipulation
 RUN apt-get install -y crudini
+
+RUN apt-get install -y software-properties-common python-software-properties
 
 # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
 RUN rm -r /var/cache/apt /var/lib/apt/lists
