@@ -119,8 +119,11 @@ RUN adduser --disabled-login --gecos 'Cloudron' cloudron
 # https://github.com/gitlabhq/gitlabhq/issues/5304
 RUN passwd -d cloudron
 
-# config file manipulation
+# ini config file manipulation
 RUN apt-get install -y crudini
+
+# xml config file manipulation
+RUN apt-get install -y xmlstarlet
 
 RUN apt-get install -y software-properties-common python-software-properties
 
