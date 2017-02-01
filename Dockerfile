@@ -57,9 +57,9 @@ RUN curl -L https://nodejs.org/dist/v4.2.6/node-v4.2.6-linux-x64.tar.gz | tar zx
 RUN mkdir -p /usr/local/node-4.4.7
 RUN curl -L https://nodejs.org/download/release/v4.4.7/node-v4.4.7-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.4.7
 
-# node (6.9.4)
-RUN mkdir -p /usr/local/node-6.9.4
-RUN curl -L https://nodejs.org/download/release/v6.9.4/node-v6.9.4-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.9.4
+# node (6.9.5)
+RUN mkdir -p /usr/local/node-6.9.5
+RUN curl -L https://nodejs.org/download/release/v6.9.5/node-v6.9.5-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.9.5
 
 # apache
 RUN apt-get -y install apache2 libapache2-mod-php7.0 libapache2-mod-perl2
