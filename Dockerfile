@@ -65,7 +65,7 @@ RUN apt-get -y install \
     php7.0-zip \
     phpmyadmin
 
-RUN curl -L https://getcomposer.org/download/1.2.0/composer.phar > /usr/local/bin/composer
+RUN curl -L https://getcomposer.org/download/1.3.2/composer.phar > /usr/local/bin/composer
 
 # perl
 RUN apt-get -y install perl
