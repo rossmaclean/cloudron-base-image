@@ -41,21 +41,17 @@ RUN apt-get -y install \
 # Databases (clients)
 RUN apt-get -y install sqlite3 mysql-client-5.7 redis-tools postgresql-client-9.5 ldap-utils mongodb-clients
 
-# node (0.10.40)
-RUN mkdir -p /usr/local/node-0.10.40
-RUN curl -L  https://nodejs.org/dist/v0.10.40/node-v0.10.40-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.10.40
+# node (0.10.48)
+RUN mkdir -p /usr/local/node-0.10.48
+RUN curl -L  https://nodejs.org/dist/v0.10.48/node-v0.10.48-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.10.48
 
-# node (0.12.7)
-RUN mkdir -p /usr/local/node-0.12.7
-RUN curl -L https://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.12.7
+# node (0.12.18)
+RUN mkdir -p /usr/local/node-0.12.18
+RUN curl -L https://nodejs.org/dist/v0.12.18/node-v0.12.18-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-0.12.18
 
-# node (4.2.6)
-RUN mkdir -p /usr/local/node-4.2.6
-RUN curl -L https://nodejs.org/dist/v4.2.6/node-v4.2.6-linux-x64.tar.gz | tar zxf - --strip-components 1 -C /usr/local/node-4.2.6
-
-# node (4.4.7)
-RUN mkdir -p /usr/local/node-4.4.7
-RUN curl -L https://nodejs.org/download/release/v4.4.7/node-v4.4.7-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.4.7
+# node (4.7.3)
+RUN mkdir -p /usr/local/node-4.7.3
+RUN curl -L https://nodejs.org/download/release/v4.7.3/node-v4.7.3-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.7.3
 
 # node (6.9.5)
 RUN mkdir -p /usr/local/node-6.9.5
