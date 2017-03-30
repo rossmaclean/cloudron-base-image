@@ -66,6 +66,7 @@ RUN apt-get -y install \
     phpmyadmin
 
 RUN curl -L https://getcomposer.org/download/1.3.2/composer.phar > /usr/local/bin/composer
+RUN chmod +x /usr/local/bin/composer
 
 # perl
 RUN apt-get -y install perl
