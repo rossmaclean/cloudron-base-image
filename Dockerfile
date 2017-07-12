@@ -62,6 +62,8 @@ RUN apt-get -y install \
     php7.0-mysqlnd \
     php7.0-pgsql \
     php7.0-sqlite \
+    php7.0-xml \
+    php7.0-xmlrpc \
     php7.0-zip \
     phpmyadmin
 
