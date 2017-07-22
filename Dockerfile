@@ -77,7 +77,7 @@ RUN apt-get -y install perl
 RUN apt-get -y install ruby2.3-dev
 
 # Python
-RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python
+RUN apt-get install -y python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv
 
 # java (maybe only runtime should be installed and not the JDK)
 RUN apt-get install -y openjdk-8-jdk maven
