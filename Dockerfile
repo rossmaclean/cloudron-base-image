@@ -102,13 +102,13 @@ RUN apt-get install -y xmlstarlet
 
 RUN apt-get install -y software-properties-common python-software-properties
 
-# node (4.7.3)
-RUN mkdir -p /usr/local/node-4.7.3
-RUN curl -L https://nodejs.org/download/release/v4.7.3/node-v4.7.3-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.7.3
+# node (4.8.4)
+RUN mkdir -p /usr/local/node-4.8.4
+RUN curl -L https://nodejs.org/download/release/v4.8.4/node-v4.8.4-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.8.4
 
-# node (6.9.5)
-RUN mkdir -p /usr/local/node-6.9.5
-RUN curl -L https://nodejs.org/download/release/v6.9.5/node-v6.9.5-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.9.5
+# node (6.11.2)
+RUN mkdir -p /usr/local/node-6.11.2
+RUN curl -L https://nodejs.org/download/release/v6.11.2/node-v6.11.2-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.11.2
 
 # go
 RUN mkdir -p /usr/local/go-1.6.4
