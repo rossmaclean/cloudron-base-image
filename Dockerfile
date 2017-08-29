@@ -114,8 +114,11 @@ RUN curl -L https://nodejs.org/download/release/v6.11.2/node-v6.11.2-linux-x64.t
 RUN mkdir -p /usr/local/go-1.6.4
 RUN curl -L https://storage.googleapis.com/golang/go1.6.4.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.6.4 --strip-components 1
 
-RUN mkdir -p /usr/local/go-1.7.5
-RUN curl -L https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.7.5 --strip-components 1
+RUN mkdir -p /usr/local/go-1.7.6
+RUN curl -L https://storage.googleapis.com/golang/go1.7.6.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.7.6 --strip-components 1
+
+RUN mkdir -p /usr/local/go-1.9
+RUN curl -L https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.9 --strip-components 1
 
 # gosu
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 -o /usr/local/bin/gosu
