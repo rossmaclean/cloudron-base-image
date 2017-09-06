@@ -12,7 +12,7 @@ RUN echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";'
 RUN apt-get -y update # sync up package information
 
 # Software installation
-RUN apt-get -y install ca-certificates curl git wget unzip
+RUN apt-get -y install ca-certificates curl git wget unzip zip
 
 # Process managers
 RUN apt-get -y install supervisor
