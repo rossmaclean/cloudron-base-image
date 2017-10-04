@@ -56,6 +56,7 @@ RUN apt-get -y install \
     php7.0-gd \
     php7.0-gmp \
     php7.0-json \
+    php7.0-imap \
     php7.0-intl \
     php7.0-ldap \
     php7.0-mcrypt \
