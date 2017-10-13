@@ -50,6 +50,7 @@ RUN apt-get -y install nginx-full
 # php
 RUN apt-get -y install \
     php-apcu \
+    php-geoip \
     php7.0-cli \
     php7.0-curl \
     php7.0-fpm \
