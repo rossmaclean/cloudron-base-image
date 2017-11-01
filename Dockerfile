@@ -105,23 +105,20 @@ RUN apt-get install -y xmlstarlet
 
 RUN apt-get install -y software-properties-common python-software-properties
 
-# node (4.8.4)
-RUN mkdir -p /usr/local/node-4.8.4
-RUN curl -L https://nodejs.org/download/release/v4.8.4/node-v4.8.4-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.8.4
+# node (4.8.5) - https://nodejs.org/download/release/latest-argon/
+RUN mkdir -p /usr/local/node-4.8.5
+RUN curl -L https://nodejs.org/download/release/v4.8.5/node-v4.8.4-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.8.5
 
-# node (6.11.2)
-RUN mkdir -p /usr/local/node-6.11.2
-RUN curl -L https://nodejs.org/download/release/v6.11.2/node-v6.11.2-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.11.2
+# node (6.11.5) - https://nodejs.org/download/release/latest-boron/
+RUN mkdir -p /usr/local/node-6.11.5
+RUN curl -L https://nodejs.org/download/release/v6.11.5/node-v6.11.5-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.11.5
 
 # go
-RUN mkdir -p /usr/local/go-1.6.4
-RUN curl -L https://storage.googleapis.com/golang/go1.6.4.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.6.4 --strip-components 1
+RUN mkdir -p /usr/local/go-1.8.5
+RUN curl -L https://storage.googleapis.com/golang/go1.8.5.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.8.5 --strip-components 1
 
-RUN mkdir -p /usr/local/go-1.7.6
-RUN curl -L https://storage.googleapis.com/golang/go1.7.6.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.7.6 --strip-components 1
-
-RUN mkdir -p /usr/local/go-1.9
-RUN curl -L https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.9 --strip-components 1
+RUN mkdir -p /usr/local/go-1.9.2
+RUN curl -L https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.9.2 --strip-components 1
 
 # gosu
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 -o /usr/local/bin/gosu
