@@ -107,7 +107,7 @@ RUN apt-get install -y software-properties-common python-software-properties
 
 # node (4.8.5) - https://nodejs.org/download/release/latest-argon/
 RUN mkdir -p /usr/local/node-4.8.5
-RUN curl -L https://nodejs.org/download/release/v4.8.5/node-v4.8.4-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.8.5
+RUN curl -L https://nodejs.org/download/release/v4.8.5/node-v4.8.5-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-4.8.5
 
 # node (6.11.5) - https://nodejs.org/download/release/latest-boron/
 RUN mkdir -p /usr/local/node-6.11.5
