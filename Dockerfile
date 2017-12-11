@@ -113,6 +113,10 @@ RUN curl -L https://nodejs.org/download/release/v4.8.5/node-v4.8.5-linux-x64.tar
 RUN mkdir -p /usr/local/node-6.11.5
 RUN curl -L https://nodejs.org/download/release/v6.11.5/node-v6.11.5-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-6.11.5
 
+# node (8.10.3) - https://nodejs.org/download/release/latest-carbon/
+RUN mkdir -p /usr/local/node-8.10.3
+RUN curl -L https://nodejs.org/download/release/v8.10.3/node-v8.10.3-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-8.10.3
+
 # go
 RUN mkdir -p /usr/local/go-1.8.5
 RUN curl -L https://storage.googleapis.com/golang/go1.8.5.linux-amd64.tar.gz | tar zxvf - -C /usr/local/go-1.8.5 --strip-components 1
