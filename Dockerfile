@@ -60,6 +60,7 @@ RUN apt-get -y install \
     php7.0-imap \
     php7.0-intl \
     php7.0-ldap \
+    php7.0-mbstring \
     php7.0-mcrypt \
     php7.0-mysqlnd \
     php7.0-pgsql \
