@@ -18,7 +18,7 @@ RUN apt-get -y install ca-certificates curl git wget unzip zip
 RUN apt-get -y install supervisor
 
 # General purpose
-RUN apt-get -y install build-essential pwgen swaks vim cmake pkg-config openssh-client uuid sudo less zip
+RUN apt-get -y install build-essential pwgen swaks vim nano cmake pkg-config openssh-client uuid sudo less zip
 
 # Dev packages (useful for native modules in ruby, node)
 RUN apt-get -y install \
