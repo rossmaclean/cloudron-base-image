@@ -19,7 +19,7 @@ RUN apt-get -y update && \
     # install net packages useful for debugging
     iputils-ping telnet netcat lsof net-tools openssl dnsutils rsync bind9-host \
     # config file manipulation
-    crudini xmlstarlet \
+    crudini xmlstarlet moreutils jq \
     # General purpose
     pwgen swaks vim nano cmake pkg-config openssh-client uuid sudo less zip dirmngr gpg gpg-agent \
     # apache
