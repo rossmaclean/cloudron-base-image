@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-MAINTAINER Girish Ramakrishnan <girish@cloudron.io>
+# https://github.com/docker-library/repo-info/blob/master/repos/ubuntu/remote/bionic-20180821.md
+FROM ubuntu:bionic-20180821@sha256:de774a3145f7ca4f0bd144c7d4ffb2931e06634f11529653b23eba85aef8e378
 
 ENV DEBIAN_FRONTEND noninteractive
 # Do not cache apt packages
