@@ -21,7 +21,7 @@ RUN apt-get -y update && \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
-    pwgen swaks vim nano cmake pkg-config openssh-client uuid sudo less zip dirmngr gpg gpg-agent \
+    pwgen swaks vim nano cmake pkg-config openssh-client uuid sudo less zip dirmngr gpg gpg-agent file \
     # apache
     apache2 libapache2-mod-php7.2 libapache2-mod-perl2 \
     # nginx
