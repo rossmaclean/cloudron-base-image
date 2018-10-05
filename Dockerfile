@@ -30,7 +30,7 @@ RUN apt-get -y update && \
     sqlite3 mysql-client redis-tools postgresql-client ldap-utils mongodb-clients \
     # Dev packages (useful for native modules in ruby, node)
     gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
-        libncurses5-dev libpq-dev libre2-dev libreadline-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
+        libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
     # perl
     perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
