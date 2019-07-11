@@ -11,7 +11,7 @@ RUN echo 'Acquire::http {No-Cache=True;};' > /etc/apt/apt.conf.d/no-cache && \
 
 RUN apt-get -y update && \
     # Software installation
-    apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make \
+    apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make gcc g++ \
     # Process managers
     supervisor \
     # install sendmail
