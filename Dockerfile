@@ -52,10 +52,10 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 -o 
 RUN mkdir -p /usr/local/node-8.12.0 && \
     curl -L https://nodejs.org/download/release/v8.12.0/node-v8.12.0-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-8.12.0
 
-# Go
-ENV GOROOT /usr/local/go-1.11.1
-RUN mkdir -p /usr/local/go-1.11.1 && \
-    curl -L https://storage.googleapis.com/golang/go1.11.1.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-1.11.1 --strip-components 1
+# Go (https://golang.org/dl/)
+ENV GOROOT /usr/local/go-1.12.6
+RUN mkdir -p /usr/local/go-1.12.6 && \
+    curl -L https://storage.googleapis.com/golang/go1.12.6.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-1.12.6 --strip-components 1
 
 # Put node, go in the path by default
 ENV PATH /usr/local/node-8.12.0/bin:$GOROOT/bin:$PATH
