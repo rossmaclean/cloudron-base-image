@@ -57,6 +57,9 @@ ENV GOROOT /usr/local/go-1.12.6
 RUN mkdir -p /usr/local/go-1.12.6 && \
     curl -L https://storage.googleapis.com/golang/go1.12.6.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-1.12.6 --strip-components 1
 
+# Keep bash history around as long as /run is alive
+RUN ln -sf /run/.bash_history /root/.bash_history
+
 # Put node, go in the path by default
 ENV PATH /usr/local/node-8.12.0/bin:$GOROOT/bin:$PATH
 
