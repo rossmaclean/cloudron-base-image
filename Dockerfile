@@ -9,10 +9,11 @@ RUN echo 'Acquire::http {No-Cache=True;};' > /etc/apt/apt.conf.d/no-cache && \
     echo 'Dir::Cache { srcpkgcache ""; pkgcache ""; }' > /etc/apt/apt.conf.d/02nocache && \
     echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/02compress-indexes
 
-RUN add-apt-repository -y ppa:ondrej/php && \
-    apt-get -y update && \
+RUN apt-get -y update && \
     # Software installation
-    apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make gcc g++ \
+    apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make gcc g++ && \
+    add-apt-repository -y ppa:ondrej/php && \
+    apt-get -y install \
     # Process managers
     supervisor \
     # install sendmail
@@ -33,13 +34,15 @@ RUN add-apt-repository -y ppa:ondrej/php && \
     gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
         libmcrypt-dev libgmp-dev libfreetype6-dev libjpeg-dev libjpeg-turbo8-dev libpng-dev chrpath libxft-dev libfontconfig1-dev \
-        libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev \
+        libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev libtool libzmq3-dev \
     # perl
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
     ruby2.5-dev \
     # Python 2
-    python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv \
+    python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv virtualenvwrapper \
+    # Python 3
+    python3-dev python3-pip \
     # php 7.3
     php7.3 php7.3-apcu php7.3-imagick php7.3-geoip libapache2-mod-php7.3 php7.3-redis php7.3-apcu php7.3-bcmath php7.3-bz2 php7.3-curl php7.3-dba php7.3-enchant \
     php7.3-gd php7.3-geoip php7.3-gettext php7.3-imagick php7.3-imap php7.3-intl php7.3-json php7.3-ldap php7.3-mbstring \
@@ -48,7 +51,7 @@ RUN add-apt-repository -y ppa:ondrej/php && \
     # java
     openjdk-8-jdk-headless && \
     # keep this here, otherwise it installs php 7.2
-    apt install composer && \
+    apt install -y composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
     rm -rf /var/cache/apt /var/lib/apt/lists
 
