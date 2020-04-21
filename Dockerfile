@@ -48,21 +48,24 @@ RUN apt-get -y update && \
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
 
 ## the installations are kept separate since these change a lot compared to above
-# node
-RUN mkdir -p /usr/local/node-8.12.0 && \
-    curl -L https://nodejs.org/download/release/v8.12.0/node-v8.12.0-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-8.12.0
+# node (https://nodejs.org/en/download/)
+ARG NODEVERSION=12.6.2
+ARG NODEPREVVERSION=10.20.1
+RUN mkdir -p /usr/local/node-${NODEVERSION} && \
+    curl -L https://nodejs.org/download/release/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-${NODEVERSION}
 
 # Go (https://golang.org/dl/)
-ENV GOROOT /usr/local/go-1.12.6
-RUN mkdir -p /usr/local/go-1.12.6 && \
-    curl -L https://storage.googleapis.com/golang/go1.12.6.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-1.12.6 --strip-components 1
+ARG GOVERSION=1.14.2
+ENV GOROOT /usr/local/go-${GOVERSION}
+RUN mkdir -p /usr/local/go-${GOVERSION} && \
+    curl -L https://storage.googleapis.com/golang/go${GOVERSION}.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-${GOVERSION} --strip-components 1
 
 # Keep bash history around as long as /run is alive
 RUN ln -sf /run/.bash_history /root/.bash_history && \
     ln -sf /run/.psql_history /root/.psql_history
 
 # Put node, go in the path by default
-ENV PATH /usr/local/node-8.12.0/bin:$GOROOT/bin:$PATH
+ENV PATH /usr/local/node-${NODEVERSION}/bin:$GOROOT/bin:$PATH
 
 # add a non-previleged user that apps can use
 # by default, account is created as inactive which prevents login via openssh
