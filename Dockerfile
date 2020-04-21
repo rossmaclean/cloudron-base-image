@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/ubuntu/?tab=tags
-FROM ubuntu:bionic-20200311@sha256:3b029ac9aa8eb5dffd43bb7326891cf64f9c228b3960cec55a56605d2ae2ad42
+FROM ubuntu:bionic-20200311@sha256:e5dd9dbb37df5b731a6688fa49f4003359f6f126958c9c928f937bec69836320
 
 ENV DEBIAN_FRONTEND noninteractive
 # Do not cache apt packages
@@ -21,7 +21,7 @@ RUN apt-get -y update && \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
-    pwgen swaks vim nano cmake pkg-config openssh-client uuid sudo less zip dirmngr gpg gpg-agent file \
+    pwgen swaks vim nano emacs cmake pkg-config openssh-client openssh-server uuid sudo less zip dirmngr gpg gpg-agent file \
     # apache
     apache2 libapache2-mod-php7.2 libapache2-mod-perl2 \
     # nginx
@@ -31,16 +31,20 @@ RUN apt-get -y update && \
     # Dev packages (useful for native modules in ruby, node)
     gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
+        libmcrypt-dev libgmp-dev libfreetype6-dev libjpeg-dev libjpeg-turbo8-dev libpng-dev chrpath libxft-dev libfontconfig1-dev \
+        libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev \
     # perl
-    perl \
+    perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
     ruby2.5-dev \
-    # Python
+    # Python 2
     python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv \
     # php 7.2
     php-apcu php-geoip php-imagick php-redis php7.2-bcmath php7.2-cli php7.2-ctype php7.2-curl php7.2-dom php7.2-fileinfo php7.2-fpm php7.2-gd php7.2-gettext php7.2-gmp php7.2-json php7.2-tidy \
         php7.2-iconv php7.2-imap php7.2-intl php7.2-ldap php7.2-mbstring php7.2-mysqlnd php7.2-phar php-pear php7.2-pgsql php7.2-redis \
         php7.2-simplexml php7.2-soap php7.2-sqlite php7.2-tokenizer php7.2-xml php7.2-xmlrpc php7.2-zip phpmyadmin composer && \
+    # java
+    openjdk-8-jdk-headless && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
     rm -rf /var/cache/apt /var/lib/apt/lists
 
