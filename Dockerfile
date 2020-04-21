@@ -1,5 +1,5 @@
-# https://github.com/docker-library/repo-info/blob/master/repos/ubuntu/remote/bionic-20180821.md
-FROM ubuntu:bionic-20180821@sha256:de774a3145f7ca4f0bd144c7d4ffb2931e06634f11529653b23eba85aef8e378
+# https://hub.docker.com/_/ubuntu/?tab=tags
+FROM ubuntu:bionic-20200311@sha256:3b029ac9aa8eb5dffd43bb7326891cf64f9c228b3960cec55a56605d2ae2ad42
 
 ENV DEBIAN_FRONTEND noninteractive
 # Do not cache apt packages
@@ -37,7 +37,7 @@ RUN apt-get -y update && \
     ruby2.5-dev \
     # Python
     python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv \
-    # php
+    # php 7.2
     php-apcu php-geoip php-imagick php-redis php7.2-bcmath php7.2-cli php7.2-ctype php7.2-curl php7.2-dom php7.2-fileinfo php7.2-fpm php7.2-gd php7.2-gettext php7.2-gmp php7.2-json php7.2-tidy \
         php7.2-iconv php7.2-imap php7.2-intl php7.2-ldap php7.2-mbstring php7.2-mysqlnd php7.2-phar php-pear php7.2-pgsql php7.2-redis \
         php7.2-simplexml php7.2-soap php7.2-sqlite php7.2-tokenizer php7.2-xml php7.2-xmlrpc php7.2-zip phpmyadmin composer && \
