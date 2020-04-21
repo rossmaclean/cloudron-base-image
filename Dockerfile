@@ -9,7 +9,8 @@ RUN echo 'Acquire::http {No-Cache=True;};' > /etc/apt/apt.conf.d/no-cache && \
     echo 'Dir::Cache { srcpkgcache ""; pkgcache ""; }' > /etc/apt/apt.conf.d/02nocache && \
     echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/02compress-indexes
 
-RUN apt-get -y update && \
+RUN add-apt-repository -y ppa:ondrej/php && \
+    apt-get -y update && \
     # Software installation
     apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make gcc g++ \
     # Process managers
@@ -39,12 +40,15 @@ RUN apt-get -y update && \
     ruby2.5-dev \
     # Python 2
     python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv \
-    # php 7.2
-    php-apcu php-geoip php-imagick php-redis php7.2-bcmath php7.2-cli php7.2-ctype php7.2-curl php7.2-dom php7.2-fileinfo php7.2-fpm php7.2-gd php7.2-gettext php7.2-gmp php7.2-json php7.2-tidy \
-        php7.2-iconv php7.2-imap php7.2-intl php7.2-ldap php7.2-mbstring php7.2-mysqlnd php7.2-phar php-pear php7.2-pgsql php7.2-redis \
-        php7.2-simplexml php7.2-soap php7.2-sqlite php7.2-tokenizer php7.2-xml php7.2-xmlrpc php7.2-zip phpmyadmin composer \
+    # php 7.3
+    php7.3 php7.3-apcu php7.3-imagick php7.3-geoip libapache2-mod-php7.3 php7.3-redis php7.3-apcu php7.3-bcmath php7.3-bz2 php7.3-curl php7.3-dba php7.3-enchant \
+    php7.3-gd php7.3-geoip php7.3-gettext php7.3-imagick php7.3-imap php7.3-intl php7.3-json php7.3-ldap php7.3-mbstring \
+    php7.3-mysql php7.3-pgsql php7.3-readline php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-uuid php7.3-xml \
+    php7.3-zip \
     # java
     openjdk-8-jdk-headless && \
+    # keep this here, otherwise it installs php 7.2
+    apt install composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
     rm -rf /var/cache/apt /var/lib/apt/lists
 
@@ -53,13 +57,13 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o 
 
 ## the installations are kept separate since these change a lot compared to above
 # node (https://nodejs.org/en/download/)
-ARG NODEVERSION=12.6.2
+ARG NODEVERSION=12.16.2
 RUN mkdir -p /usr/local/node-${NODEVERSION} && \
-    curl -L https://nodejs.org/download/release/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-${NODEVERSION}
+    curl -L https://nodejs.org/dist/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEVERSION}
 
 ARG NODEPREVVERSION=10.20.1
 RUN mkdir -p /usr/local/node-${NODEPREVVERSION} && \
-    curl -L https://nodejs.org/download/release/v${NODEPREVVERSION}/node-v${NODEPREVVERSION}-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-${NODEPREVVERSION}
+    curl -L https://nodejs.org/dist/v${NODEPREVVERSION}/node-v${NODEPREVVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEPREVVERSION}
 
 # Go (https://golang.org/dl/)
 ARG GOVERSION=1.14.2
