@@ -50,9 +50,12 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o 
 ## the installations are kept separate since these change a lot compared to above
 # node (https://nodejs.org/en/download/)
 ARG NODEVERSION=12.6.2
-ARG NODEPREVVERSION=10.20.1
 RUN mkdir -p /usr/local/node-${NODEVERSION} && \
     curl -L https://nodejs.org/download/release/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-${NODEVERSION}
+
+ARG NODEPREVVERSION=10.20.1
+RUN mkdir -p /usr/local/node-${NODEPREVVERSION} && \
+    curl -L https://nodejs.org/download/release/v${NODEPREVVERSION}/node-v${NODEPREVVERSION}-linux-x64.tar.gz  | tar zxf - --strip-components 1 -C /usr/local/node-${NODEPREVVERSION}
 
 # Go (https://golang.org/dl/)
 ARG GOVERSION=1.14.2
