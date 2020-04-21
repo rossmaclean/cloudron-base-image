@@ -87,6 +87,8 @@ ENV PATH /usr/local/node-${NODEVERSION}/bin:$GOROOT/bin:$PATH
 RUN adduser --uid 1000 --disabled-login --gecos 'Cloudron' cloudron && \
     passwd -d cloudron
 
+RUN addgroup --gid 500 --system cloudron-volume
+
 RUN echo "set noswapfile" >> /root/.vimrc && \
     echo "set noswapfile" >> /home/cloudron/.vimrc
 
