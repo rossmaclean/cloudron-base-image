@@ -45,7 +45,7 @@ RUN apt-get -y update && \
     rm -rf /var/cache/apt /var/lib/apt/lists
 
 # gosu
-RUN curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
+RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
 
 ## the installations are kept separate since these change a lot compared to above
 # node
