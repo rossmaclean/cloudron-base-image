@@ -10,9 +10,13 @@ RUN echo 'Acquire::http {No-Cache=True;};' > /etc/apt/apt.conf.d/no-cache && \
     echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/02compress-indexes
 
 RUN apt-get -y update && \
-    # Software installation
+    # Software installation (for add-apt-repository)
     apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make gcc g++ && \
     add-apt-repository -y ppa:ondrej/php && \
+    # yarn
+    apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg && \
+    echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && \
     apt-get -y install \
     # Process managers
     supervisor \
@@ -23,7 +27,7 @@ RUN apt-get -y update && \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
-    pwgen swaks vim nano emacs cmake pkg-config openssh-client openssh-server uuid sudo less zip dirmngr gpg gpg-agent file \
+    pwgen swaks vim nano emacs cmake pkg-config openssh-client openssh-server uuid sudo less zip dirmngr gpg gpg-agent file yarn \
     # apache
     apache2 libapache2-mod-php7.2 libapache2-mod-perl2 \
     # nginx
@@ -34,7 +38,7 @@ RUN apt-get -y update && \
     gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
         libmcrypt-dev libgmp-dev libfreetype6-dev libjpeg-dev libjpeg-turbo8-dev libpng-dev chrpath libxft-dev libfontconfig1-dev \
-        libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev libtool libzmq3-dev \
+        libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev libtool libzmq3-dev yarn \
     # perl
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
