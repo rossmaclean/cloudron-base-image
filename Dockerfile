@@ -94,7 +94,10 @@ ENV PATH /usr/local/node-${NODEVERSION}/bin:$GOROOT/bin:$PATH
 RUN adduser --uid 1000 --disabled-login --gecos 'Cloudron' cloudron && \
     passwd -d cloudron
 
-RUN addgroup --gid 500 --system cloudron-volume
+# add the two commonly used users to the volume group
+RUN addgroup --gid 500 --system cloudron-volume && \
+    useradd -g cloudron-volume cloudron && \
+    useradd -g www-data cloudron
 
 RUN echo "set noswapfile" >> /root/.vimrc && \
     echo "set noswapfile" >> /home/cloudron/.vimrc
