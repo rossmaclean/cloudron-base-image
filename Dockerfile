@@ -10,8 +10,8 @@ RUN echo 'Acquire::http {No-Cache=True;};' > /etc/apt/apt.conf.d/no-cache && \
     echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/02compress-indexes
 
 RUN apt-get -y update && \
-    # Software installation (for add-apt-repository)
-    apt-get -y install ca-certificates curl git wget unzip zip software-properties-common build-essential make gcc g++ && \
+    # Software installation (for add-apt-repository and apt-key)
+    apt-get -y install ca-certificates curl dirmngr git gpg gpg-agent wget unzip zip software-properties-common build-essential make gcc g++ sudo && \
     add-apt-repository -y ppa:ondrej/php && \
     # yarn
     apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg && \
@@ -27,7 +27,7 @@ RUN apt-get -y update && \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
-    pwgen swaks vim nano emacs cmake pkg-config openssh-client openssh-server uuid sudo less zip dirmngr gpg gpg-agent file yarn \
+    pwgen swaks vim nano emacs cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
     # apache
     apache2 libapache2-mod-php7.2 libapache2-mod-perl2 \
     # nginx
@@ -48,12 +48,14 @@ RUN apt-get -y update && \
     # Python 3
     python3-dev python3-pip \
     # php 7.3
-    php7.3 php7.3-apcu php7.3-imagick php7.3-geoip libapache2-mod-php7.3 php7.3-redis php7.3-apcu php7.3-bcmath php7.3-bz2 php7.3-curl php7.3-dba php7.3-enchant \
-    php7.3-gd php7.3-geoip php7.3-gettext php7.3-imagick php7.3-imap php7.3-intl php7.3-json php7.3-ldap php7.3-mbstring \
-    php7.3-mysql php7.3-pgsql php7.3-readline php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-uuid php7.3-xml \
-    php7.3-zip \
+    php7.3 php7.3-common php7.3-cli php7.3-dev php7.3-apcu php7.3-imagick php7.3-geoip libapache2-mod-php7.3 php7.3-redis php7.3-apcu php7.3-bcmath php7.3-bz2 php7.3-curl php7.3-dba php7.3-enchant \
+    php7.3-gd php7.3-geoip php7.3-gettext php7.3-imagick php7.3-imap php7.3-intl php7.3-json php7.3-ldap php7.3-mbstring php7.3-opcache \
+    php7.3-mysql php7.3-pgsql php7.3-readline php7.3-soap php7.3-sqlite3 php7.3-tidy php7.3-uuid php7.3-xml php7.3-xmlrpc \
+    php7.3-zip php7.3-fpm \
     # java
     openjdk-8-jdk-headless && \
+    # disable 7.2 apache mod
+    a2dismod php7.2 && \
     # keep this here, otherwise it installs php 7.2
     apt install -y composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
