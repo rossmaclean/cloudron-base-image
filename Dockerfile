@@ -30,7 +30,7 @@ RUN apt remove -y php* && \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
-    pwgen swaks vim nano emacs cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
+    pwgen swaks vi nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
     # apache
     apache2 libapache2-mod-perl2 \
     # nginx
@@ -52,8 +52,6 @@ RUN apt remove -y php* && \
     python3-dev python3-pip \
     # php 7.3
     php7.3 php7.3-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,snmp,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 \
-    # java
-    openjdk-8-jdk-headless && \
     # keep this here, otherwise it installs php 7.2
     apt install -y composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
