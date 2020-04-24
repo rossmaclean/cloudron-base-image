@@ -68,6 +68,10 @@ ENV GOROOT /usr/local/go-${GOVERSION}
 RUN mkdir -p /usr/local/go-${GOVERSION} && \
     curl -L https://storage.googleapis.com/golang/go${GOVERSION}.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-${GOVERSION} --strip-components 1
 
+# python3 as default
+RUN ln -sf /usr/bin/python3 /usr/bin/python && \
+    ln -sf /usr/bin/pip3 /usr/bin/pip
+
 # Keep bash history around as long as /run is alive
 RUN ln -sf /run/.bash_history /root/.bash_history && \
     ln -sf /run/.psql_history /root/.psql_history && \
