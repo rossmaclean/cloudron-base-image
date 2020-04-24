@@ -43,7 +43,7 @@ RUN apt remove -y php* && \
     # perl
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
-    ruby2.5-dev rbenv \
+    ruby2.5-dev \
     # Python 3
     python3-dev python3-pip uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv virtualenvwrapper \
     # php 7.3
