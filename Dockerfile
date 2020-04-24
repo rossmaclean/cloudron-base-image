@@ -23,14 +23,12 @@ RUN apt remove -y php* && \
     apt-get -y install \
     # Process managers
     supervisor \
-    # install sendmail
-    postfix \
     # install net packages useful for debugging
     iputils-ping telnet netcat lsof net-tools openssl dnsutils rsync bind9-host \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
-    pwgen swaks vi nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
+    pwgen swaks vim nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
     # apache
     apache2 libapache2-mod-perl2 \
     # nginx
@@ -46,12 +44,10 @@ RUN apt remove -y php* && \
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
     ruby2.5-dev rbenv \
-    # Python 2
-    python2.7 gunicorn uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv virtualenvwrapper \
     # Python 3
-    python3-dev python3-pip \
+    python3-dev python3-pip uwsgi-plugin-python python-dev python-pip python-setuptools virtualenv virtualenvwrapper \
     # php 7.3
-    php7.3 php7.3-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,snmp,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 \
+    php7.3 php7.3-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,snmp,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 && \
     # keep this here, otherwise it installs php 7.2
     apt install -y composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
@@ -65,10 +61,6 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o 
 ARG NODEVERSION=12.16.2
 RUN mkdir -p /usr/local/node-${NODEVERSION} && \
     curl -L https://nodejs.org/dist/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEVERSION}
-
-ARG NODEPREVVERSION=10.20.1
-RUN mkdir -p /usr/local/node-${NODEPREVVERSION} && \
-    curl -L https://nodejs.org/dist/v${NODEPREVVERSION}/node-v${NODEPREVVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEPREVVERSION}
 
 # Go (https://golang.org/dl/)
 ARG GOVERSION=1.14.2
