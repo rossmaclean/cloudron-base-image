@@ -85,7 +85,7 @@ RUN adduser --uid 1000 --disabled-login --gecos 'Cloudron' cloudron && \
 # add the two commonly used users to the volume group
 RUN addgroup --gid 500 --system media && \
     usermod -a -G media cloudron && \
-    usermod -a -G www-data cloudron
+    usermod -a -G media www-data
 
 RUN echo "set noswapfile" >> /root/.vimrc && \
     echo "set noswapfile" >> /home/cloudron/.vimrc
