@@ -71,7 +71,8 @@ RUN mkdir -p /usr/local/go-${GOVERSION} && \
 # Keep bash history around as long as /run is alive
 RUN ln -sf /run/.bash_history /root/.bash_history && \
     ln -sf /run/.psql_history /root/.psql_history && \
-    ln -sf /run/.mysql_history /root/.mysql_history
+    ln -sf /run/.mysql_history /root/.mysql_history && \
+    ln -sf /run/.mongorc.js /root/.mongorc.js
 
 # Put node, go in the path by default
 ENV PATH /usr/local/node-${NODEVERSION}/bin:$GOROOT/bin:$PATH
