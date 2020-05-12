@@ -34,7 +34,7 @@ RUN apt remove -y php* && \
     # nginx
     nginx-full \
     # Databases (clients)
-    sqlite3 mysql-client redis-tools postgresql-client ldap-utils mongodb-clients \
+    sqlite3 mysql-client redis-tools postgresql-client ldap-utils mongodb-clients mongo-tools \
     # Dev packages (useful for native modules in ruby, node)
     gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
