@@ -68,10 +68,11 @@ ENV GOROOT /usr/local/go-${GOVERSION}
 RUN mkdir -p /usr/local/go-${GOVERSION} && \
     curl -L https://storage.googleapis.com/golang/go${GOVERSION}.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-${GOVERSION} --strip-components 1
 
-# Keep bash history around as long as /run is alive
+# Keep bash history around as long as /run is alive. .dbshell is mongodb
 RUN ln -sf /run/.bash_history /root/.bash_history && \
     ln -sf /run/.psql_history /root/.psql_history && \
     ln -sf /run/.mysql_history /root/.mysql_history && \
+    ln -sf /run/.dbshell /root/.dbshell && \
     ln -sf /run/.mongorc.js /root/.mongorc.js
 
 # Put node, go in the path by default
