@@ -30,7 +30,7 @@ RUN apt remove -y php* && \
     # General purpose
     pwgen swaks vim nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
     # apache
-    apache2 libapache2-mod-perl2 \
+    apache2 libapache2-mod-perl2 apache2-dev \
     # nginx
     nginx-full \
     # Databases (clients)
