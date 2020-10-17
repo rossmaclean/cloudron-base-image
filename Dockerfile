@@ -14,7 +14,7 @@ SHELL ["/bin/bash", "-c"]
 RUN apt remove -y php* && \
     apt-get -y update && \
     # Software installation (for add-apt-repository and apt-key)
-    apt-get -y install ca-certificates curl dirmngr git gpg gpg-agent wget unzip zip software-properties-common build-essential make gcc g++ sudo && \
+    apt-get -y install ca-certificates curl dirmngr git gpg gpg-agent wget unzip zip software-properties-common build-essential make gcc g++ sudo cron && \
     add-apt-repository -y ppa:ondrej/php && \
     # yarn
     apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg && \
