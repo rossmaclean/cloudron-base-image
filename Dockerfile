@@ -47,7 +47,7 @@ RUN apt remove -y php* && \
     # Python 3
     python3-dev python3-pip uwsgi-plugin-python python-dev python-pip python-setuptools python3-setuptools virtualenv virtualenvwrapper \
     # php 7.3
-    php7.3 php7.3-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 php-{apcu,date,geoip,gettext,imagick,gnupg,mailparse,pear,redis,twig,uuid,validate,zmq} && \
+    php7.3 php7.3-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 php-{apcu,date,geoip,gettext,imagick,gnupg,mailparse,pear,redis,twig,uuid,validate,zmq} \
     # good to have!
     ghostscript libgs-dev ffmpeg && \
     # keep this here, otherwise it installs php 7.2
