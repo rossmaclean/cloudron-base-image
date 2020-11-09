@@ -34,9 +34,14 @@ RUN apt remove -y php* && \
     # nginx
     nginx-full \
     # Databases (clients)
-    sqlite3 mysql-client redis-tools postgresql-client ldap-utils mongodb-clients mongo-tools \
+    sqlite3 mysql-client redis-tools postgresql-client ldap-utils && \
+    # MongoDB
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add - && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
+    apt-get update && \
+    apt-get install -y mongodb-org-shell=4.0.19 mongodb-org-mongos=4.0.19 mongodb-org-tools=4.0.19 && \
     # Dev packages (useful for native modules in ruby, node)
-    gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
+    apt-get install -y gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
         libmcrypt-dev libgmp-dev libfreetype6-dev libjpeg-dev libjpeg-turbo8-dev libpng-dev chrpath libxft-dev libfontconfig1-dev \
         libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev libtool libzmq3-dev yarn \
