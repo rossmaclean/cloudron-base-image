@@ -16,6 +16,8 @@ RUN apt remove -y php* && \
     # Software installation (for add-apt-repository and apt-key)
     apt-get -y install ca-certificates curl dirmngr git gpg gpg-agent wget unzip zip software-properties-common build-essential make gcc g++ sudo cron && \
     add-apt-repository -y ppa:ondrej/php && \
+    # ffmpeg >= 4.1
+    add-apt-repository ppa:jonathonf/ffmpeg-4 && \
     # yarn
     apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg && \
     echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
@@ -54,11 +56,12 @@ RUN apt remove -y php* && \
     # php 7.3
     php7.3 php7.3-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 php-{apcu,date,geoip,gettext,imagick,gnupg,mailparse,pear,redis,twig,uuid,validate,zmq} \
     # good to have!
-    ghostscript libgs-dev ffmpeg && \
+    ghostscript libgs-dev ffmpeg x264 x265 && \
     # keep this here, otherwise it installs php 7.2
     apt install -y composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt-get errors for --fix-missing
     rm -rf /var/cache/apt /var/lib/apt/lists
+
 
 # gosu
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
