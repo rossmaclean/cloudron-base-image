@@ -26,7 +26,7 @@ RUN apt remove -y php* && \
     # Process managers
     supervisor \
     # install net packages useful for debugging
-    iputils-ping telnet netcat lsof net-tools openssl dnsutils rsync bind9-host \
+    iputils-ping telnet netcat lsof net-tools openssl dnsutils rsync bind9-host stress \
     # config file manipulation
     crudini xmlstarlet moreutils jq \
     # General purpose
