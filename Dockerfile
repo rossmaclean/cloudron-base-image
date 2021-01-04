@@ -22,21 +22,24 @@ RUN apt remove -y php* && \
     apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg && \
     echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
     apt-get -y update && \
+    # postgres
+    curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
+    echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" >> /etc/apt/sources.list.d/postgresql.list && \
     apt-get -y install \
-    # Process managers
-    supervisor \
-    # install net packages useful for debugging
-    iputils-ping telnet netcat lsof net-tools openssl dnsutils rsync bind9-host stress \
-    # config file manipulation
-    crudini xmlstarlet moreutils jq \
-    # General purpose
-    pwgen swaks vim nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
-    # apache
-    apache2 libapache2-mod-perl2 apache2-dev \
-    # nginx
-    nginx-full \
-    # Databases (clients)
-    sqlite3 mysql-client redis-tools postgresql-client ldap-utils && \
+        # Process managers
+        supervisor \
+        # install net packages useful for debugging
+        iputils-ping telnet netcat lsof net-tools openssl dnsutils rsync bind9-host stress \
+        # config file manipulation
+        crudini xmlstarlet moreutils jq \
+        # General purpose
+        pwgen swaks vim nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
+        # apache
+        apache2 libapache2-mod-perl2 apache2-dev \
+        # nginx
+        nginx-full \
+        # Databases (clients)
+        sqlite3 mysql-client redis-tools postgresql-client-11 ldap-utils && \
     # MongoDB
     wget -qO - https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add - && \
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
