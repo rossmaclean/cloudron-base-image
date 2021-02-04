@@ -14,8 +14,6 @@ SHELL ["/bin/bash", "-c"]
 RUN apt -y update && \
     # Software installation (for add-apt-repository and apt-key)
     apt -y install ca-certificates curl dirmngr git gpg gpg-agent wget unzip zip software-properties-common build-essential make gcc g++ sudo cron && \
-    add-apt-repository -y ppa:ondrej/php && \
-    apt -y update && \
     # postgres
     curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
     echo "deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main" >> /etc/apt/sources.list.d/postgresql.list && \
