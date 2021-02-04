@@ -30,7 +30,8 @@ list of all avaiable locales is at /usr/share/i18n/SUPPORTED. so one can copy ov
 SUPPORTED file into locale.gen and run `locale-gen` to compile everything.
 
 on ubuntu, locales-all contains all the pre-compiled info thankfully. all the things are in
-/usr/lib/locale. locale -a will show all locales as well.
+/usr/lib/locale. locale -a will show all locales as well. the `locales` package contains the tools
+like locale-gen.
 
 `/etc/default/locale` contains the system default locale.
 
