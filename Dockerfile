@@ -66,7 +66,7 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o 
 ARG NODEVERSION=14.15.4
 RUN mkdir -p /usr/local/node-${NODEVERSION} && \
     curl -L https://nodejs.org/dist/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEVERSION} && \
-    PATH=/usr/local/node-${NODEVERSION}/bin npm install --global yarn
+    PATH=/usr/local/node-${NODEVERSION}/bin:$PATH npm install --global yarn
 
 # Go (https://golang.org/dl/)
 ARG GOVERSION=1.15.7
