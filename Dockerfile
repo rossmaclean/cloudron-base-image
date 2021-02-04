@@ -33,7 +33,7 @@ RUN apt -y update && \
         # nginx
         nginx-full \
         # Databases (clients)
-        sqlite3 mysql-client redis-tools postgresql-client-11 ldap-utils && \
+        sqlite3 mysql-client redis-tools postgresql-client-12 ldap-utils && \
     # MongoDB
     wget -qO - https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add - && \
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
