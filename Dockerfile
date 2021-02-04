@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/ubuntu/?tab=tags
-FROM ubuntu:bionic-20200311@sha256:e5dd9dbb37df5b731a6688fa49f4003359f6f126958c9c928f937bec69836320
+FROM ubuntu:focal-0210119@sha256:3093096ee188f8ff4531949b8f6115af4747ec1c58858c091c8cb4579c39cc4e
 
 ENV DEBIAN_FRONTEND noninteractive
 # Do not cache apt packages
