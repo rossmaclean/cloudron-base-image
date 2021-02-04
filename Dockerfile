@@ -35,10 +35,10 @@ RUN apt -y update && \
         # Databases (clients)
         sqlite3 mysql-client redis-tools postgresql-client-12 ldap-utils && \
     # MongoDB
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.0.asc | sudo apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list && \
-    apt update && \
-    apt install -y mongodb-org-shell=4.0.22 mongodb-org-mongos=4.0.22 mongodb-org-tools=4.0.22 && \
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list && \
+    apt -y update && \
+    apt install -y mongo-tools mongodb-clients && \
     # Dev packages (useful for native modules in ruby, node)
     apt install -y gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
@@ -47,9 +47,9 @@ RUN apt -y update && \
     # perl
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
-    ruby2.5-dev \
+    ruby2.7-dev \
     # Python 3
-    python3-dev python3-pip uwsgi-plugin-python python-dev python-pip python-setuptools python3-setuptools virtualenv virtualenvwrapper \
+    python3-dev python3-pip uwsgi-plugin-python3 python-dev python-setuptools python3-setuptools virtualenv virtualenvwrapper \
     # php 7.4
     php7.4 php7.4-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,recode,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.3 php-{apcu,date,geoip,gettext,imagick,gnupg,mailparse,pear,redis,twig,uuid,validate,zmq} \
     # good to have!
