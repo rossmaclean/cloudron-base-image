@@ -45,7 +45,7 @@ RUN apt -y update && \
     # perl
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
-    ruby2.7-dev \
+    ruby2.7 ruby2.7-dev \
     # Python 3
     python3-dev python3-pip uwsgi-plugin-python3 python-dev python-setuptools python3-setuptools virtualenv virtualenvwrapper \
     # php 7.4
