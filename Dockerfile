@@ -57,7 +57,6 @@ RUN apt -y update && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt errors for --fix-missing
     rm -rf /var/cache/apt /var/lib/apt/lists
 
-
 # gosu
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
 
@@ -73,6 +72,10 @@ ARG GOVERSION=1.15.7
 ENV GOROOT /usr/local/go-${GOVERSION}
 RUN mkdir -p /usr/local/go-${GOVERSION} && \
     curl -L https://storage.googleapis.com/golang/go${GOVERSION}.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-${GOVERSION} --strip-components 1
+
+# https://github.com/mikefarah/yq/releases
+ARG YQVERSION=4.5.0
+RUN curl -sL https://github.com/mikefarah/yq/releases/download/4.5.0/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
 
 # Keep bash history around as long as /run is alive. .dbshell is mongodb
 RUN ln -sf /run/.bash_history /root/.bash_history && \
