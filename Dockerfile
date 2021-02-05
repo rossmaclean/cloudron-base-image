@@ -99,4 +99,4 @@ RUN echo "set noswapfile" >> /root/.vimrc && \
     echo "set noswapfile" >> /home/cloudron/.vimrc
 
 # this also sets /etc/default/locale (see detailed notes in README)
-RUN update-locale 'C.UTF-8'
+RUN update-locale LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 LC_ALL=en_US.UTF-8
