@@ -105,3 +105,7 @@ RUN echo "set noswapfile" >> /root/.vimrc && \
 
 # this also sets /etc/default/locale (see detailed notes in README)
 RUN update-locale LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+# source any app specific rcfile
+RUN echo -e "\n[[ -f /app/data/.bashrc ]] && source /app/data/.bashrc" >> /root/.bashrc
+
