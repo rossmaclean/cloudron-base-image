@@ -81,6 +81,8 @@ RUN curl -sL https://github.com/mikefarah/yq/releases/download/v4.5.0/yq_linux_a
 RUN ln -sf /run/.bash_history /root/.bash_history && \
     ln -sf /run/.psql_history /root/.psql_history && \
     ln -sf /run/.mysql_history /root/.mysql_history && \
+    ln -sf /run/.irb_history /root/.irb_history && \
+    ln -sf /run/.inputrc /root/.inputrc && \
     ln -sf /run/.dbshell /root/.dbshell && \
     ln -sf /run/.mongorc.js /root/.mongorc.js
 
