@@ -62,20 +62,20 @@ RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o 
 
 ## the installations are kept separate since these change a lot compared to above
 # node (https://nodejs.org/en/download/)
-ARG NODEVERSION=14.15.4
+ARG NODEVERSION=16.13.1
 RUN mkdir -p /usr/local/node-${NODEVERSION} && \
     curl -L https://nodejs.org/dist/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEVERSION} && \
     PATH=/usr/local/node-${NODEVERSION}/bin:$PATH npm install --global yarn
 
 # Go (https://golang.org/dl/)
-ARG GOVERSION=1.15.7
+ARG GOVERSION=1.17.5
 ENV GOROOT /usr/local/go-${GOVERSION}
 RUN mkdir -p /usr/local/go-${GOVERSION} && \
     curl -L https://storage.googleapis.com/golang/go${GOVERSION}.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-${GOVERSION} --strip-components 1
 
 # https://github.com/mikefarah/yq/releases
-ARG YQVERSION=4.5.0
-RUN curl -sL https://github.com/mikefarah/yq/releases/download/v4.5.0/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
+ARG YQVERSION=4.16.1
+RUN curl -sL https://github.com/mikefarah/yq/releases/download/v${YQVERSION}/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
 
 # Keep bash history around as long as /run is alive. .dbshell is mongodb
 RUN ln -sf /run/.bash_history /root/.bash_history && \
