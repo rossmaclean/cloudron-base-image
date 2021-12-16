@@ -32,11 +32,11 @@ RUN apt -y update && \
         nginx-full \
         # Databases (clients)
         sqlite3 mysql-client-8.0 redis-tools postgresql-client-12 ldap-utils && \
-    # MongoDB. this is still bionic because there is no 4.2 for focal
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list && \
+    # MongoDB. this is still bionic because there is no 4.4 for focal
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add - && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
     apt -y update && \
-    apt install -y mongodb-org-shell=4.2.12 mongodb-org-tools=4.2.12 && \
+    apt install -y mongodb-org-shell=4.4.10 mongodb-org-tools=4.4.10 && \
     # Dev packages (useful for native modules in ruby, node)
     apt install -y gettext imagemagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
