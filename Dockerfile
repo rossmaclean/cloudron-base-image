@@ -25,7 +25,7 @@ RUN apt -y update && \
         # config file manipulation
         crudini xmlstarlet moreutils jq \
         # General purpose
-        pwgen swaks vim nano cmake pkg-config openssh-client openssh-server uuid less zip file yarn \
+        pwgen swaks vim nano cmake pkg-config openssh-client openssh-server uuid less zip file \
         # apache
         apache2 libapache2-mod-perl2 apache2-dev \
         # nginx
