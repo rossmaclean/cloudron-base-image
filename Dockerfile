@@ -14,9 +14,6 @@ SHELL ["/bin/bash", "-c"]
 RUN apt -y update && \
     # Software installation (for add-apt-repository and apt-key)
     apt -y install ca-certificates curl dirmngr git gpg gpg-agent wget unzip zip software-properties-common build-essential make gcc g++ sudo cron dos2unix && \
-    # postgres
-    curl -sL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && \
-    echo "deb http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main" >> /etc/apt/sources.list.d/postgresql.list && \
     apt -y install \
         # Process managers
         supervisor \
@@ -32,11 +29,10 @@ RUN apt -y update && \
         nginx-full \
         # Databases (clients)
         sqlite3 mysql-client-8.0 redis-tools postgresql-client-14 ldap-utils && \
-    # MongoDB. this is still bionic because there is no 4.4 for focal
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
+    curl -sSL https://www.mongodb.org/static/pgp/server-6.0.asc | gpg --dearmor > /usr/share/keyrings/mongodb.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/mongodb.gpg arch=amd64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-6.0.list && \
     apt -y update && \
-    apt install -y mongodb-org-shell=4.4.10 mongodb-org-tools=4.4.10 && \
+    apt install -y mongodb-org-shell=6.0.3 mongodb-org-tools=6.0.3 && \
     # Dev packages (useful for native modules in ruby, node)
     apt install -y gettext imagemagick graphicsmagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
@@ -45,11 +41,11 @@ RUN apt -y update && \
     # perl
     perl libimage-exiftool-perl \
     # ruby (note that gem is now called gem2.1 and gem2.2)
-    ruby2.7 ruby2.7-dev \
+    ruby3.0 ruby3.0-dev \
     # Python 3
-    python3-dev python3-pip uwsgi-plugin-python3 python-dev python-setuptools python3-setuptools virtualenv virtualenvwrapper \
-    # php 7.4
-    php7.4 php7.4-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,json,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,snmp,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php7.4 php-{apcu,date,geoip,imagick,gnupg,mailparse,pear,redis,smbclient,twig,uuid,validate,zmq} \
+    python3-dev python3-pip uwsgi-plugin-python3 python3-setuptools virtualenv virtualenvwrapper \
+    # php 8.1
+    php8.1 php8.1-{bcmath,bz2,cgi,cli,common,curl,dba,dev,enchant,fpm,gd,gmp,imap,interbase,intl,ldap,mbstring,mysql,odbc,opcache,pgsql,phpdbg,pspell,readline,snmp,soap,sqlite3,sybase,tidy,xml,xmlrpc,xsl,zip} libapache2-mod-php8.1 php-{apcu,date,imagick,gnupg,mailparse,pear,redis,smbclient,twig,uuid,validate,zmq} \
     # good to have!
     ghostscript libgs-dev ffmpeg x264 x265 && \
     # keep this here, otherwise it installs php 7.4
@@ -58,23 +54,23 @@ RUN apt -y update && \
     rm -rf /var/cache/apt /var/lib/apt/lists
 
 # gosu
-RUN curl -L https://github.com/tianon/gosu/releases/download/1.12/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
+RUN curl -L https://github.com/tianon/gosu/releases/download/1.14/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
 
 ## the installations are kept separate since these change a lot compared to above
 # node (https://nodejs.org/en/download/)
-ARG NODEVERSION=16.13.1
+ARG NODEVERSION=18.12.1
 RUN mkdir -p /usr/local/node-${NODEVERSION} && \
     curl -L https://nodejs.org/dist/v${NODEVERSION}/node-v${NODEVERSION}-linux-x64.tar.xz | tar Jxf - --strip-components 1 -C /usr/local/node-${NODEVERSION} && \
     PATH=/usr/local/node-${NODEVERSION}/bin:$PATH npm install --global yarn
 
 # Go (https://golang.org/dl/)
-ARG GOVERSION=1.17.5
+ARG GOVERSION=1.19.3
 ENV GOROOT /usr/local/go-${GOVERSION}
 RUN mkdir -p /usr/local/go-${GOVERSION} && \
     curl -L https://storage.googleapis.com/golang/go${GOVERSION}.linux-amd64.tar.gz | tar zxf - -C /usr/local/go-${GOVERSION} --strip-components 1
 
 # https://github.com/mikefarah/yq/releases
-ARG YQVERSION=4.16.1
+ARG YQVERSION=4.30.5
 RUN curl -sL https://github.com/mikefarah/yq/releases/download/v${YQVERSION}/yq_linux_amd64 -o /usr/bin/yq && chmod +x /usr/bin/yq
 
 # Keep bash history around as long as /run is alive. .dbshell is mongodb
