@@ -31,7 +31,7 @@ RUN apt -y update && \
         # nginx
         nginx-full \
         # Databases (clients)
-        sqlite3 mysql-client-8.0 redis-tools postgresql-client-12 ldap-utils && \
+        sqlite3 mysql-client-8.0 redis-tools postgresql-client-14 ldap-utils && \
     # MongoDB. this is still bionic because there is no 4.4 for focal
     wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add - && \
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
