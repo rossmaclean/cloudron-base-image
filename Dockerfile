@@ -29,10 +29,7 @@ RUN apt -y update && \
         nginx-full \
         # Databases (clients)
         sqlite3 mysql-client-8.0 redis-tools postgresql-client-14 ldap-utils && \
-    curl -sSL https://www.mongodb.org/static/pgp/server-6.0.asc | gpg --dearmor > /usr/share/keyrings/mongodb.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/mongodb.gpg arch=amd64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-6.0.list && \
     apt -y update && \
-    apt install -y mongodb-org-shell=6.0.3 mongodb-org-tools=6.0.3 && \
     # Dev packages (useful for native modules in ruby, node)
     apt install -y gettext imagemagick graphicsmagick libcurl4 libcurl4-openssl-dev libexpat1-dev libffi-dev libgdbm-dev libicu-dev libmysqlclient-dev \
         libncurses5-dev libpq-dev libre2-dev libreadline-dev libssl-dev libxml2-dev libxslt-dev libyaml-dev zlib1g-dev \
@@ -40,7 +37,7 @@ RUN apt -y update && \
         libkrb5-dev libpq-dev libxslt1-dev libldap2-dev libsasl2-dev libtool libzmq3-dev locales-all locales libmagic1 \
     # perl
     perl libimage-exiftool-perl \
-    # ruby (note that gem is now called gem2.1 and gem2.2)
+    # ruby
     ruby3.0 ruby3.0-dev \
     # Python 3
     python3-dev python3-pip uwsgi-plugin-python3 python3-setuptools virtualenv virtualenvwrapper \
@@ -52,6 +49,12 @@ RUN apt -y update && \
     apt install -y composer && \
     # Delete apt-cache and let people apt-update on start. Without this, we keep getting apt errors for --fix-missing
     rm -rf /var/cache/apt /var/lib/apt/lists
+
+# mongo shell (https://www.mongodb.com/try/download/shell)
+RUN curl https://downloads.mongodb.com/compass/mongodb-mongosh_1.6.1_amd64.deb -o /tmp/mongosh.deb && \
+    dpkg -i /tmp/mongosh.deb && \
+    rm /tmp/mongosh.deb && \
+    mongosh --nodb --eval "disableTelemetry()"
 
 # gosu
 RUN curl -L https://github.com/tianon/gosu/releases/download/1.14/gosu-amd64 -o /usr/local/bin/gosu && chmod +x /usr/local/bin/gosu
