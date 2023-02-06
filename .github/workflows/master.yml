@@ -6,8 +6,6 @@ env:
   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
 on:
-  push:
-    branches: [ master ]
   workflow_dispatch:
     inputs:
       version:
