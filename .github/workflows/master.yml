@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Clone cloudron base image repo
         run: git clone --depth 1 --branch v${{ github.event.inputs.version }} https://git.cloudron.io/cloudron/docker-base-image.git
+      - name: ls
+        run: ls -la && pwd
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
