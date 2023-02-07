@@ -20,7 +20,7 @@ jobs:
 
   build_and_push_for_tag:
     runs-on: ubuntu-latest
-    depends-on: get_missing_versions
+    needs: get_missing_versions
     strategy:
       matrix:
         tag: [10.x, 12.x, 14.x, 15.x]
