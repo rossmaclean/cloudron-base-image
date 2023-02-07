@@ -1,4 +1,5 @@
 import json
+import os.path
 import sys
 
 import requests as requests
@@ -50,4 +51,5 @@ def get_missing_tags():
 
 if __name__ == '__main__':
     missing_tags = get_missing_tags()
-    print(f'::set-output name=missing_tags::{missing_tags}')
+    with open(os.environ["GITHUB_STATE"], "w") as text_file:
+        text_file.write(f"missing_tags={missing_tags}")
