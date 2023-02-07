@@ -23,7 +23,7 @@ jobs:
     needs: get_missing_versions
     strategy:
       matrix:
-        tag: [10.x, 12.x, 14.x, 15.x]
+        tag: ${{ env.missing_tags }}
 
     steps:
       - uses: actions/checkout@v3
