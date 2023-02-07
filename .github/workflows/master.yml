@@ -27,9 +27,8 @@ jobs:
         run: docker login --username ${{ env.DOCKER_USER }} --password ${{ env.DOCKERHUB_TOKEN }}
       - name: Docker build and push
         run: docker buildx build
+          --push
           --tag ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ github.event.inputs.version }}
-          --tag ${{ env.DOCKER_USER }}/${{ github.event.inputs.version }}:latest
+          --tag ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:latest
           --platform=linux/amd64
           .
-      - name: Docker push
-        run: docker push --all-tags
