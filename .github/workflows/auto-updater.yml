@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.x'
       - name: Get missing versions
-        run: get_missing_versions.py
+        run: ./get_missing_versions.py
         shell: python
 #  build:
 #    runs-on: ubuntu-latest
