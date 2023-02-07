@@ -1,5 +1,8 @@
 name: Auto Updater
 
+on:
+  workflow_dispatch:
+
 jobs:
   get_missing_versions:
     runs-on: ubuntu-latest
