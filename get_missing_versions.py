@@ -51,5 +51,5 @@ def get_missing_tags():
 
 if __name__ == '__main__':
     missing_tags = get_missing_tags()
-    with open(os.environ["GITHUB_STATE"], "w") as text_file:
+    with open(os.environ["GITHUB_ENV"], "w") as text_file:
         text_file.write(f"missing_tags={missing_tags}")
