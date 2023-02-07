@@ -35,7 +35,6 @@ jobs:
         run: docker build 
           -t ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ github.event.inputs.version }} 
           -t ${{ env.DOCKER_USER }}/${{ github.event.inputs.version }}:latest 
-#          --platform=linux/amd64,linux/arm64 
           .
       - name: Docker push
         run: docker push 
