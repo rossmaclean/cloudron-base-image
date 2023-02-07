@@ -30,4 +30,5 @@ jobs:
           --push
           -t ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ github.event.inputs.version }}
           -t ${{ env.DOCKER_USER }}/${{ github.event.inputs.version }}:latest
+          --platform=linux/amd64
           .
