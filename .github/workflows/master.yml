@@ -32,7 +32,7 @@ jobs:
           --username ${{ env.DOCKER_USER }} 
           --password ${{ env.DOCKERHUB_TOKEN }}
       - name: Docker build
-        run: docker build 
+        run: docker buildx build
           -t ${{ env.DOCKER_USER }}/${{ env.APP_NAME }}:${{ github.event.inputs.version }} 
           -t ${{ env.DOCKER_USER }}/${{ github.event.inputs.version }}:latest 
           .
