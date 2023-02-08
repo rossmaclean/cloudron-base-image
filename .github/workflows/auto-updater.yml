@@ -17,13 +17,19 @@ jobs:
         run: python get_missing_versions.py
       - name: Show tags
         run: echo ${{ env.missing_tags }}
+      - name: Set output
+        run: echo "missing_versions=$(echo ${{ env.missing_tags }})" >> $GITHUB_OUTPUT
+    outputs:
+      missing_tags:
+        description: "Random number"
+        value: ${{ steps.get_missing_versions.outputs.missing_versions }}
 
   build_and_push_for_tag:
     runs-on: ubuntu-latest
     needs: get_missing_versions
     strategy:
       matrix:
-        tag: "${{ env.missing_tags }}"
+        tag: ${{ steps.get_missing_versions.outputs.missing_versions }}
 
     steps:
       - uses: actions/checkout@v3
